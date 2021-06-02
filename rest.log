@@ -1,0 +1,13 @@
+2021-06-02 16:28:16 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 16:28:27 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 16:28:28 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 16:28:28 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 16:28:28 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 16:28:28 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 19:09:13 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 19:12:01 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 19:27:15 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 19:44:08 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 19:44:21 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 20:07:04 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-02 20:57:07 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
