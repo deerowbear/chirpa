@@ -1,9 +1,10 @@
 package com.example.chirpa.service.local.user;
 
 import com.example.chirpa.model.UserModel;
+import com.example.chirpa.service.local.follow.FollowerLocalService;
 import com.example.chirpa.service.modelmapper.UserModelMapper;
 import com.example.chirpa.service.persistence.dao.users.UserDao;
-import com.example.chirpa.service.persistence.domain.users.User;
+import com.example.chirpa.service.persistence.domain.User;
 import com.example.chirpa.service.persistence.exception.DataNotFoundException;
 import com.example.chirpa.service.persistence.exception.LocalServiceException;
 import com.example.chirpa.util.ModelUtils;
@@ -23,11 +24,20 @@ public class UserLocalServiceImpl implements UserLocalService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private FollowerLocalService followerLocalService;
+
     @Override
     public List<UserModel> list() throws LocalServiceException {
         try {
             List<User> users = userDao.findAll();
-            return ModelUtils.toModels(users, UserModelMapper.class);
+
+            List<UserModel> userModels = ModelUtils.toModels(users, UserModelMapper.class);
+
+            for(UserModel userModel : userModels) {
+                userModel.setFollowerModels(followerLocalService.findFollowersById(userModel.getUserId()));
+            }
+            return userModels;
         } catch (Exception ex) {
             LOG.error(ex);
             throw new LocalServiceException(ex);
@@ -37,7 +47,9 @@ public class UserLocalServiceImpl implements UserLocalService {
     @Override
     public UserModel findById(long id) throws LocalServiceException {
         try {
-            return ModelUtils.toModel(userDao.findById(id), UserModelMapper.class);
+            UserModel userModel = ModelUtils.toModel(userDao.findById(id), UserModelMapper.class);
+            userModel.setFollowerModels(followerLocalService.findFollowersById(userModel.getUserId()));
+            return userModel;
         } catch (Exception ex) {
             LOG.error(ex);
             throw new LocalServiceException(ex);
@@ -82,7 +94,11 @@ public class UserLocalServiceImpl implements UserLocalService {
     @Override
     public List<UserModel> findByUserName(String userName) throws LocalServiceException {
         try {
-            return ModelUtils.toModels(userDao.findByUserName(userName), UserModelMapper.class);
+            List<UserModel> userModels = ModelUtils.toModels(userDao.findByUserName(userName), UserModelMapper.class);
+            for(UserModel userModel : userModels) {
+                userModel.setFollowerModels(followerLocalService.findFollowersById(userModel.getUserId()));
+            }
+            return userModels;
         } catch (PersistenceException | DataNotFoundException ex) {
             LOG.error(ex);
             throw new LocalServiceException(ex);

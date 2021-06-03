@@ -19,4 +19,6 @@ public interface FollowerLocalService {
 
     public List<FollowerModel> findByUserName(String userName) throws LocalServiceException;
 
+    public List<FollowerModel> findFollowersById(long userId) throws LocalServiceException;
+
 }

@@ -1,7 +1,7 @@
 package com.example.chirpa.service.persistence.dao.follower;
 
 import com.example.chirpa.service.persistence.dao.follower.repository.FollowerRepository;
-import com.example.chirpa.service.persistence.domain.follower.Follower;
+import com.example.chirpa.service.persistence.domain.Follower;
 import com.example.chirpa.service.persistence.exception.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,6 +25,18 @@ public class FollowerDaoImpl implements FollowerDao {
     @Transactional(readOnly = true , propagation = Propagation.REQUIRED)
     public List<Follower> findAll() throws PersistenceException, DataNotFoundException {
         return followerRepository.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true , propagation = Propagation.REQUIRED)
+    public List<Follower> findByUserName(String userName) throws PersistenceException, DataNotFoundException {
+        return followerRepository.findByUserName(userName);
+    }
+
+    @Override
+    @Transactional(readOnly = true , propagation = Propagation.REQUIRED)
+    public List<Follower> findByUserId(long userId) throws PersistenceException {
+        return followerRepository.findByUserId(userId);
     }
 
     @Override

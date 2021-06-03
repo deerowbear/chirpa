@@ -1,7 +1,7 @@
 package com.example.chirpa.service.persistence.dao.users;
 
 import com.example.chirpa.service.persistence.dao.users.repository.UsersRepository;
-import com.example.chirpa.service.persistence.domain.users.User;
+import com.example.chirpa.service.persistence.domain.User;
 import com.example.chirpa.service.persistence.exception.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -63,7 +63,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    @Transactional(readOnly = true , propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
     public User update(User user) throws DataNotFoundException, PersistenceException, DataNotFoundException {
         if ( user == null ) {
             throw new IllegalArgumentException("User object can not be null");

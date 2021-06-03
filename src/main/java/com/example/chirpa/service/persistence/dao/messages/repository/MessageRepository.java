@@ -1,6 +1,7 @@
-package com.example.chirpa.service.persistence.dao.follower.repository;
+package com.example.chirpa.service.persistence.dao.messages.repository;
 
 import com.example.chirpa.service.persistence.domain.Follower;
+import com.example.chirpa.service.persistence.domain.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,12 +10,9 @@ import java.util.List;
 
 
 @Repository
-public interface FollowerRepository extends JpaRepository<Follower, Long> {
+public interface MessageRepository extends JpaRepository<Message, Long> {
     @Transactional
-    public List<Follower> findByUserName(String userName);
-
-    @Transactional
-    public List<Follower> findByUserId(long userId);
+    public List<Message> findMessagesByFromUserName(String fromUserName);
 
 
 }

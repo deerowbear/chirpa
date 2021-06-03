@@ -2,7 +2,7 @@ package com.example.chirpa.service.persistence.dao.users;
 
 
 import com.example.chirpa.service.persistence.dao.SimpleCrudDao;
-import com.example.chirpa.service.persistence.domain.users.User;
+import com.example.chirpa.service.persistence.domain.User;
 import com.example.chirpa.service.persistence.exception.DataNotFoundException;
 
 import javax.persistence.PersistenceException;

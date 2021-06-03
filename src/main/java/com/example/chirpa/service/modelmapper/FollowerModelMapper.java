@@ -1,7 +1,7 @@
 package com.example.chirpa.service.modelmapper;
 
 import com.example.chirpa.model.FollowerModel;
-import com.example.chirpa.service.persistence.domain.follower.Follower;
+import com.example.chirpa.service.persistence.domain.Follower;
 import com.example.chirpa.util.ModelMapper;
 import com.example.chirpa.util.ModelMapperException;
 

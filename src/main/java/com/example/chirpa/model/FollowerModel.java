@@ -1,6 +1,8 @@
 package com.example.chirpa.model;
 
-public class FollowerModel {
+import com.example.chirpa.service.remote.common.BaseRequest;
+
+public class FollowerModel extends BaseRequest {
 
     private long followerId;
     private long userId;

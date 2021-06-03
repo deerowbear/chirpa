@@ -1,12 +1,19 @@
 package com.example.chirpa.model;
 
+import com.example.chirpa.service.remote.common.BaseRequest;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserModel {
+public class UserModel extends BaseRequest {
+
 
     private long userId;
     private String userName;
+
+    public UserModel() {
+
+    }
 
     List<FollowerModel> followerModels = new ArrayList<>();
 
@@ -33,4 +40,5 @@ public class UserModel {
     public void setFollowerModels(List<FollowerModel> followerModels) {
         this.followerModels = followerModels;
     }
+
 }

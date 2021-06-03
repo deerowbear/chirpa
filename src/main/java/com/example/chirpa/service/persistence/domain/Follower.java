@@ -1,4 +1,4 @@
-package com.example.chirpa.service.persistence.domain.follower;
+package com.example.chirpa.service.persistence.domain;
 
 
 import javax.persistence.*;
@@ -63,7 +63,7 @@ public class Follower implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("com.example.chirpa.service.persistence.domain.follower.Follower[ id=" + followerId);
+        StringBuilder sb = new StringBuilder("com.example.chirpa.service.persistence.domain.Follower[ id=" + followerId);
         sb.append("\n userId = ").append(userId);
         sb.append("\n userName = ").append(userName);
         sb.append(" ]");

@@ -11,3 +11,58 @@
 2021-06-02 19:44:21 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
 2021-06-02 20:07:04 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
 2021-06-02 20:57:07 ERROR UserLocalServiceImpl:54 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-03 09:36:41 ERROR UserLocalServiceImpl:66 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-03 09:44:07 ERROR UserLocalServiceImpl:66 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-03 09:55:36 ERROR UserLocalServiceImpl:66 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-03 10:00:55 DEBUG UserControllerTest:74 - {
+  "userId" : 1,
+  "userName" : "MyTestUser",
+  "followerModels" : [ ],
+  "messageModel" : [ ]
+}
+2021-06-03 10:07:00 DEBUG UserControllerTest:73 - {
+  "userId" : 0,
+  "userName" : "MyTestUser33",
+  "followerModels" : [ ],
+  "messageModel" : [ ]
+}
+2021-06-03 10:07:15 DEBUG UserControllerTest:73 - {
+  "userId" : 0,
+  "userName" : "MyTestUser33",
+  "followerModels" : [ ],
+  "messageModel" : [ ]
+}
+2021-06-03 10:08:23 DEBUG UserControllerTest:73 - {
+  "userId" : 0,
+  "userName" : "MyTestUser33",
+  "followerModels" : [ ],
+  "messageModel" : [ ]
+}
+2021-06-03 10:08:35 DEBUG UserControllerTest:73 - {
+  "userId" : 0,
+  "userName" : "MyTestUser33",
+  "followerModels" : [ ],
+  "messageModel" : [ ]
+}
+2021-06-03 10:10:54 DEBUG UserControllerTest:75 - {
+  "userId" : 0,
+  "userName" : "MyTestUser33",
+  "followerModels" : [ ],
+  "messageModel" : [ ]
+}
+2021-06-03 10:11:15 DEBUG UserControllerTest:75 - {
+  "userId" : 0,
+  "userName" : "MyTestUser33",
+  "followerModels" : [ ],
+  "messageModel" : [ ]
+}
+2021-06-03 10:12:28 DEBUG UserControllerTest:75 - {
+  "userId" : 0,
+  "userName" : "MyTestUser33",
+  "followerModels" : [ ]
+}
+2021-06-03 10:13:04 DEBUG UserControllerTest:78 - {"userName": "dwilmes44"}
+2021-06-03 10:16:53 DEBUG UserControllerTest:78 - {"userName": "dwilmes44"}
+2021-06-03 10:17:27 DEBUG UserControllerTest:78 - {"userName": "dwilmes44"}
+2021-06-03 10:29:07 ERROR UserLocalServiceImpl:66 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username
+2021-06-03 11:25:47 ERROR UserLocalServiceImpl:66 - com.example.chirpa.service.persistence.exception.LocalServiceException: Duplicate Username

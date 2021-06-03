@@ -1,4 +1,4 @@
-package com.example.chirpa.service.persistence.domain.users;
+package com.example.chirpa.service.persistence.domain;
 
 
 import javax.persistence.*;
@@ -53,7 +53,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("com.example.chirpa.service.persistence.domain.users.User[ id=" + userId);
+        StringBuilder sb = new StringBuilder("com.example.chirpa.service.persistence.domain.User[ id=" + userId);
         sb.append("\n userName = ").append(userName);
         sb.append(" ]");
         return sb.toString();

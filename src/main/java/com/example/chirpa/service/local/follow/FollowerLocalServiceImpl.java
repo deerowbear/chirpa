@@ -5,7 +5,7 @@ import com.example.chirpa.model.UserModel;
 import com.example.chirpa.service.local.user.UserLocalService;
 import com.example.chirpa.service.modelmapper.FollowerModelMapper;
 import com.example.chirpa.service.persistence.dao.follower.FollowerDao;
-import com.example.chirpa.service.persistence.domain.follower.Follower;
+import com.example.chirpa.service.persistence.domain.Follower;
 import com.example.chirpa.service.persistence.exception.DataNotFoundException;
 import com.example.chirpa.service.persistence.exception.LocalServiceException;
 import com.example.chirpa.util.ModelUtils;
@@ -58,7 +58,7 @@ public class FollowerLocalServiceImpl implements FollowerLocalService {
         if(null == followedUserModel || followedUserModel.isEmpty()) throw new LocalServiceException("Error user with username " + followerModel.getUserName() + " does not exist.");
 
         List<FollowerModel> followerModels = this.findByUserName(followerModel.getUserName());
-        if(followerModels.size() > 1) throw new LocalServiceException("Error user is already followed");
+        if(null != followedUserModel && followerModels.size() >= 1) throw new LocalServiceException("Error user is already followed");
 
         try {
             Follower follower = ModelUtils.toDomain(followerModel, FollowerModelMapper.class);
@@ -96,7 +96,18 @@ public class FollowerLocalServiceImpl implements FollowerLocalService {
     @Override
     public List<FollowerModel> findByUserName(String userName) throws LocalServiceException {
         try {
-            return null;
+            return ModelUtils.toModels(followerDao.findByUserName(userName), FollowerModelMapper.class);
+        } catch (PersistenceException | DataNotFoundException ex) {
+            LOG.error(ex);
+            throw new LocalServiceException(ex);
+        }
+    }
+
+
+    @Override
+    public List<FollowerModel> findFollowersById(long userId) throws LocalServiceException {
+        try {
+            return ModelUtils.toModels(followerDao.findByUserId(userId), FollowerModelMapper.class);
         } catch (PersistenceException ex) {
             LOG.error(ex);
             throw new LocalServiceException(ex);
