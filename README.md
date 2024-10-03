@@ -18,3 +18,13 @@ http://localhost:8080/ws/v1/user/list
 "followerModels":[]
 }
 ```
+### Docker build and run (Run from the root of the project)
+
+#### Build
+```
+docker build -t my-app .
+```
+#### Run
+```
+sudo docker run -it --rm -p 8080:8080 my-app
+```
