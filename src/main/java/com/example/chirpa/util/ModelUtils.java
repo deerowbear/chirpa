@@ -3,6 +3,7 @@ package com.example.chirpa.util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class ModelUtils {
@@ -44,13 +45,9 @@ public class ModelUtils {
 		if(domainObjs == null) {
 			throw new IllegalArgumentException("Domain object collection cannot be null");
 		}
-
-		List<T> models = new ArrayList<T>();
-		for(U domain : domainObjs) {
-			models.add(toModel(domain, mapperClass));
-		}
-
-		return models;
+		return domainObjs.stream()
+				.map(domain -> toModel(domain, mapperClass))
+				.collect(Collectors.toList());
 	}
 
 	/**
@@ -101,13 +98,9 @@ public class ModelUtils {
 		if(modelObjs == null) {
 			throw new IllegalArgumentException("Model object collection cannot be null");
 		}
-
-		List<U> domains = new ArrayList<U>();
-		for(T model : modelObjs) {
-			domains.add(toDomain(model, mapperClass));
-		}
-
-		return domains;
+		return modelObjs.stream()
+				.map(model -> toDomain(model, mapperClass))
+				.collect(Collectors.toList());
 	}
 
 	/**

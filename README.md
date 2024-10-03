@@ -26,5 +26,5 @@ docker build -t my-app .
 ```
 #### Run
 ```
-sudo docker run -it --rm -p 8080:8080 my-app
+docker run -it --rm -p 8080:8080 my-app
 ```

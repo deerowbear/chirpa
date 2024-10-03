@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.PersistenceException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -30,14 +32,13 @@ public class UserLocalServiceImpl implements UserLocalService {
     @Override
     public List<UserModel> list() throws LocalServiceException {
         try {
-            List<User> users = userDao.findAll();
 
-            List<UserModel> userModels = ModelUtils.toModels(users, UserModelMapper.class);
+            return userDao.findAll().stream()
+                    .map(userModel -> ModelUtils.toModel(userModel, UserModelMapper.class))
+                    .peek(userModel -> userModel.setFollowerModels(followerLocalService.findFollowersById(userModel.getUserId()).orElse(new ArrayList<>())))
+                    .collect(Collectors.toList());
 
-            for(UserModel userModel : userModels) {
-                userModel.setFollowerModels(followerLocalService.findFollowersById(userModel.getUserId()));
-            }
-            return userModels;
+
         } catch (Exception ex) {
             LOG.error(ex);
             throw new LocalServiceException(ex);
@@ -48,7 +49,7 @@ public class UserLocalServiceImpl implements UserLocalService {
     public UserModel findById(long id) throws LocalServiceException {
         try {
             UserModel userModel = ModelUtils.toModel(userDao.findById(id), UserModelMapper.class);
-            userModel.setFollowerModels(followerLocalService.findFollowersById(userModel.getUserId()));
+            userModel.setFollowerModels(followerLocalService.findFollowersById(userModel.getUserId()).orElse(new ArrayList<>()));
             return userModel;
         } catch (Exception ex) {
             LOG.error(ex);
@@ -94,11 +95,12 @@ public class UserLocalServiceImpl implements UserLocalService {
     @Override
     public List<UserModel> findByUserName(String userName) throws LocalServiceException {
         try {
-            List<UserModel> userModels = ModelUtils.toModels(userDao.findByUserName(userName), UserModelMapper.class);
-            for(UserModel userModel : userModels) {
-                userModel.setFollowerModels(followerLocalService.findFollowersById(userModel.getUserId()));
-            }
-            return userModels;
+
+
+            return userDao.findByUserName(userName).stream()
+                    .map(user -> ModelUtils.toModel(user, UserModelMapper.class))
+                    .peek(userModel -> userModel.setFollowerModels(followerLocalService.findFollowersById(userModel.getUserId()).orElse(new ArrayList<>())))
+                    .collect(Collectors.toList());
         } catch (PersistenceException | DataNotFoundException ex) {
             LOG.error(ex);
             throw new LocalServiceException(ex);

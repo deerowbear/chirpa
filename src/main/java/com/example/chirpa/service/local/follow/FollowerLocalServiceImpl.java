@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.PersistenceException;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -105,12 +106,12 @@ public class FollowerLocalServiceImpl implements FollowerLocalService {
 
 
     @Override
-    public List<FollowerModel> findFollowersById(long userId) throws LocalServiceException {
+    public Optional<List<FollowerModel>> findFollowersById(long userId) {
         try {
-            return ModelUtils.toModels(followerDao.findByUserId(userId), FollowerModelMapper.class);
+            return Optional.of(ModelUtils.toModels(followerDao.findByUserId(userId), FollowerModelMapper.class));
         } catch (PersistenceException ex) {
             LOG.error(ex);
-            throw new LocalServiceException(ex);
+            return Optional.empty();
         }
     }
 

@@ -4,6 +4,7 @@ import com.example.chirpa.model.FollowerModel;
 import com.example.chirpa.service.persistence.exception.LocalServiceException;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface FollowerLocalService {
 
@@ -19,6 +20,6 @@ public interface FollowerLocalService {
 
     public List<FollowerModel> findByUserName(String userName) throws LocalServiceException;
 
-    public List<FollowerModel> findFollowersById(long userId) throws LocalServiceException;
+    public Optional<List<FollowerModel>> findFollowersById(long userId);
 
 }

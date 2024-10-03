@@ -43,9 +43,9 @@ public class BaseRemoteServiceController {
 	 */
 	protected String formatBindingResultErrors(BindingResult result) {
 		StringBuilder sb = new StringBuilder();
-		for (ObjectError objectError : result.getAllErrors()) {
-			sb.append(objectError.getObjectName()).append(" : ").append(objectError.getDefaultMessage()).append("\n");
-		}
+		result.getAllErrors().stream()
+			.map(objectError -> objectError.getObjectName() + " : " + objectError.getDefaultMessage())
+			.forEach(sb::append);
 		return sb.toString();
 	}
 
